@@ -1,0 +1,21 @@
+campaign_id,campaign_name,channel,platform,objective,start_date,end_date,daily_budget,target_audience
+101,Brand Search - Core,Paid Search,Google Ads,Conversions,2023-01-01,2026-09-30,900,Existing Intent
+102,Generic Search - Category,Paid Search,Google Ads,Conversions,2023-01-01,2026-09-30,1400,New Prospects
+103,Competitor Conquesting,Paid Search,Bing Ads,Conversions,2023-03-01,2025-06-30,400,Competitor Intent
+104,Shopping - Evergreen,Paid Search,Google Ads,Sales,2023-02-01,2026-09-30,1100,Product Seekers
+201,Meta Prospecting,Paid Social,Meta,Conversions,2023-01-01,2026-09-30,1800,Lookalike
+202,Meta Retargeting,Paid Social,Meta,Conversions,2023-01-01,2026-09-30,600,Site Visitors
+203,TikTok Awareness,Paid Social,TikTok,Awareness,2023-06-01,2026-09-30,900,Gen Z
+204,LinkedIn B2B Leads,Paid Social,LinkedIn,Leads,2023-04-01,2026-09-30,700,B2B Decision Makers
+205,Pinterest Discovery,Paid Social,Pinterest,Traffic,2024-02-01,2025-12-31,350,Home & Lifestyle
+301,Display Prospecting,Display,Google Display,Awareness,2023-01-01,2026-09-30,500,In-Market
+302,Display Remarketing,Display,Google Display,Conversions,2023-01-01,2026-09-30,300,Cart Abandoners
+303,Programmatic Premium,Display,DV360,Awareness,2024-01-01,2026-09-30,650,Affluent
+401,Welcome Series,Email,Klaviyo,Retention,2023-01-01,2026-09-30,40,New Subscribers
+402,Weekly Newsletter,Email,Klaviyo,Engagement,2023-01-01,2026-09-30,60,All Subscribers
+403,Win-back Flow,Email,Klaviyo,Retention,2023-05-01,2026-09-30,30,Lapsed Customers
+501,Affiliate Network,Affiliate,Impact,Sales,2023-01-01,2026-09-30,500,Coupon & Content
+502,Influencer Partnerships,Affiliate,Creator Collab,Awareness,2023-09-01,2026-09-30,750,Social Followers
+601,YouTube Pre-roll,Video,YouTube,Awareness,2023-02-01,2026-09-30,800,In-Market
+602,Connected TV Pilot,Video,CTV,Awareness,2025-01-01,2026-09-30,1000,Household Targeting
+603,Spring Promo Burst 2024,Paid Social,Meta,Sales,2024-03-01,2024-04-30,1500,Lookalike
