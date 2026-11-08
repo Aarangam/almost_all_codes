@@ -24,10 +24,24 @@
     WHERE 
         platform = "Meta"
 
-"""Question 4: Total spend and total revenue across all time. """
+"""Question 5: Total spend and total revenue across all time. """
 
     SELECT
         sum(spend) AS Total_Spend,
         sum(revenue) AS Total_Revenue
     FROM
         `my-sql-project-513018.campaign_data.daily_performance`
+
+"""Question 6: Total spend per region, highest first. """
+
+    SELECT 
+        region, 
+        round(sum(spend),2) AS Total_spend
+    FROM 
+        `my-sql-project-513018.campaign_data.daily_performance`
+    GROUP BY 
+        1
+    ORDER BY round(sum(spend),2) DESC
+
+"""Question 7: Rows on Black Friday 2025 (2025-11-28) with more than 100 conversions."""
+
