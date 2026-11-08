@@ -23,3 +23,11 @@
         `my-sql-project-513018.campaign_data.campaigns`
     WHERE 
         platform = "Meta"
+
+"""Question 4: Total spend and total revenue across all time. """
+
+    SELECT
+        sum(spend) AS Total_Spend,
+        sum(revenue) AS Total_Revenue
+    FROM
+        `my-sql-project-513018.campaign_data.daily_performance`
