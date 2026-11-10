@@ -65,3 +65,52 @@
         AND date <= "2024-06-30"
         AND campaign_id IN (101, 102, 201)
     ORDER BY date
+
+
+"""Question 9: Find campaigns whose name contains the word "Search"."""
+
+    SELECT 
+        campaign_name
+    FROM 
+        `my-sql-project-513018.campaign_data.campaigns`
+    WHERE 
+        campaign_name LIKE "%Search%"
+
+
+"""Question 10: How many rows have a NULL revenue? """
+
+    SELECT 
+        COUNT(*)
+    FROM 
+        `my-sql-project-513018.campaign_data.daily_performance`
+    WHERE 
+        revenue IS NULL
+
+
+"""Question 11: Top 10 individual rows by revenue (date, campaign_id, region, revenue). """
+
+    SELECT
+        date,
+        campaign_id,
+        region,
+        round(sum(revenue), 2) AS Revenue
+    FROM
+        `my-sql-project-513018.campaign_data.daily_performance`
+    GROUP BY 1, 2, 3
+    ORDER BY revenue DESC
+    LIMIT 10
+
+
+"""Question 12: Add a calculated CTR (as %) for each row in January 2023, showing only the 5 highest CTRs."""
+
+    SELECT
+        impressions,
+        clicks,
+        round(clicks / impressions, 2) AS CTR
+    FROM `my-sql-project-513018.campaign_data.daily_performance`
+    WHERE date >= "2023-01-01" AND date <= "2023-01-31"
+    ORDER BY(clicks / impressions) DESC
+    LIMIT 5
+
+
+
