@@ -45,3 +45,23 @@
 
 """Question 7: Rows on Black Friday 2025 (2025-11-28) with more than 100 conversions."""
 
+
+    SELECT 
+        *
+    FROM 
+        `my-sql-project-513018.campaign_data.daily_performance`
+    WHERE
+        date = "2025-11-28"
+        AND conversions > 100
+
+"""Question 8: Performance rows between 2024-06-01 and 2024-06-30 for campaigns 101, 102 and 201."""
+
+    SELECT
+        *
+    FROM
+        `my-sql-project-513018.campaign_data.daily_performance`
+    WHERE
+        date >= "2024-06-01"
+        AND date <= "2024-06-30"
+        AND campaign_id IN (101, 102, 201)
+    ORDER BY date
