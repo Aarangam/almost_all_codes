@@ -113,4 +113,12 @@
     LIMIT 5
 
 
+"""Question 12: Number of campaigns per channel."""
+
+    SELECT 
+        channel AS Channel, 
+        COUNT(campaign_name) AS No_of_Channel
+    FROM 
+        `my-sql-project-513018.campaign_data.campaigns`
+    GROUP BY 1
 
