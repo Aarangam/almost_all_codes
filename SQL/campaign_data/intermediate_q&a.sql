@@ -24,3 +24,5 @@
         `my-sql-project-513018.campaign_data.campaigns` c
     ON d.campaign_id = c.campaign_id
     GROUP BY 1, 2
+
+""" Question 3 """
