@@ -55,4 +55,15 @@
     GROUP BY 
         1
 
-""" Question 5: Replace NULL revenue with 0 using COALESCE and compare it to the raw sum.
+""" Question 5: Replace NULL revenue with 0 using COALESCE and compare it to the raw sum."""
+
+    SELECT 
+        sum(revenue), 
+        sum(coalesce(revenue, 0)), 
+        COUNT(*)
+    FROM 
+        `my-sql-project-513018.campaign_data.daily_performance`
+
+"""Classify each campaign's overall ROAS as 'Great' (>=6), 'Good' (3 to <6), or 'Poor' (<3) using CASE."""
+
+    
