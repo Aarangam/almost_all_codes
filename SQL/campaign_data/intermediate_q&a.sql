@@ -66,4 +66,18 @@
 
 """Classify each campaign's overall ROAS as 'Great' (>=6), 'Good' (3 to <6), or 'Poor' (<3) using CASE."""
 
-    
+    SELECT
+        c.campaign_name AS Campiagn,
+        (CASE
+            WHEN round(safe_divide(sum(d.revenue), sum(d.spend)), 2) >= 6 THEN "Great"
+            WHEN round(safe_divide(sum(d.revenue), sum(d.spend)), 2) >= 3 AND round(safe_divide(sum(d.revenue), sum(d.spend)), 2) < 6 THEN "Good"
+            WHEN round(safe_divide(sum(d.revenue), sum(d.spend)), 2) < 3 THEN "Poor"
+        END) AS ROAS_Performance,
+        round(safe_divide(sum(d.revenue), sum(d.spend)), 2) AS ROAS,
+    FROM 
+        `my-sql-project-513018.campaign_data.daily_performance` d
+    LEFT JOIN 
+        `my-sql-project-513018.campaign_data.campaigns` c
+    ON d.campaign_id = c.campaign_id
+    GROUP BY 1
+
