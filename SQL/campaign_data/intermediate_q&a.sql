@@ -64,7 +64,7 @@
     FROM 
         `my-sql-project-513018.campaign_data.daily_performance`
 
-"""Classify each campaign's overall ROAS as 'Great' (>=6), 'Good' (3 to <6), or 'Poor' (<3) using CASE."""
+""" Question 6: Classify each campaign's overall ROAS as 'Great' (>=6), 'Good' (3 to <6), or 'Poor' (<3) using CASE."""
 
     SELECT
         c.campaign_name AS Campiagn,
@@ -81,3 +81,32 @@
     ON d.campaign_id = c.campaign_id
     GROUP BY 1
 
+
+""" Question 7: Monthly revenue trend for 2025 (month, revenue)."""
+
+    SELECT 
+        format_date('%m', date) AS Month,
+        round(sum(revenue), 2) AS Revenue
+    FROM 
+        `my-sql-project-513018.campaign_data.daily_performance`
+    WHERE 
+        date >= "2025-01-01" AND date <"2026-01-01"
+    GROUP BY 
+        1
+    ORDER BY 
+        Month
+
+""" Question 8: Which day of the week generates the most average daily revenue? (0 = Sunday in SQLite)"""
+
+    SELECT
+        format_date('%w', date) AS Week_num,
+        format_date('%A', date) AS Week_day,
+        avg(Revenue) AS Average_Revenue
+    FROM
+        (SELECT date, sum(revenue) AS Revenue
+            FROM `my-sql-project-513018.campaign_data.daily_performance`
+            GROUP BY 1)
+    GROUP BY 
+        1, 2
+    ORDER BY 
+        Average_Revenue DESC
