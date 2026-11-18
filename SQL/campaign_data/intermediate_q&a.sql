@@ -110,3 +110,5 @@
         1, 2
     ORDER BY 
         Average_Revenue DESC
+
+""" Question 9: Campaigns that never ran in 2026 (anti-join with NOT EXISTS)."""
