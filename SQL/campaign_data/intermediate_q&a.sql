@@ -137,7 +137,20 @@
 
 """ Question 12:  Data-quality report: rows where clicks exceed impressions, by campaign."""
 
-
+    SELECT
+        c.campaign_name,
+        COUNT(*) AS Bad_rows
+    FROM
+        `my-sql-project-513018.campaign_data.campaigns` c
+    RIGHT JOIN
+        `my-sql-project-513018.campaign_data.daily_performance` d
+    ON d.campaign_id = c.campaign_id
+    WHERE
+        d.clicks > d.impressions
+    GROUP BY 
+        1
+    ORDER BY 
+        Bad_rows DESC
 
 """ Question 13: Combine two result sets with UNION ALL: total spend from Q4 2024 and Q4 2025, labeled."""
 
