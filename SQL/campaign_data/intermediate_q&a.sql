@@ -127,20 +127,20 @@
         Year DESC
 
 
-""" Question 10:"""
+""" Question 10: Campaigns whose total revenue is above the average campaign total (subquery)."""
 
 
 
-""" Question 11:"""
+""" Question 11: Find the duplicated business keys (same date + campaign + region appearing more than once)."""
 
 
 
-""" Question 12:"""
+""" Question 12:  Data-quality report: rows where clicks exceed impressions, by campaign."""
 
 
 
-""" Question 13:"""
+""" Question 13: Combine two result sets with UNION ALL: total spend from Q4 2024 and Q4 2025, labeled."""
 
 
 
-""" Question 14:"""
+""" Question 14: Pivot: revenue per channel with one column per year (conditional aggregation)."""
