@@ -154,6 +154,21 @@
 
 """ Question 13: Combine two result sets with UNION ALL: total spend from Q4 2024 and Q4 2025, labeled."""
 
+    SELECT
+        "Q4 2024" AS Period,
+        sum(spend) AS Spend
+    FROM 
+        `my-sql-project-513018.campaign_data.daily_performance`
+    WHERE 
+        date >= "2024-10-01" AND date <= "2024-12-31"
+    UNION ALL
+    SELECT
+        "Q4 2025" AS Period,
+        sum(spend) AS Spend
+    FROM 
+        `my-sql-project-513018.campaign_data.daily_performance`
+    WHERE 
+        date >= "2025-10-01" AND date <= "2025-12-31"
 
 
 """ Question 14: Pivot: revenue per channel with one column per year (conditional aggregation)."""
