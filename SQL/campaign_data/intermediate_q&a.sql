@@ -112,10 +112,19 @@
         Average_Revenue DESC
 
 """ Question 9: Campaigns that never ran in 2026 (anti-join with NOT EXISTS)."""
-select c.campaign_name from `my-sql-project-513018.campaign_data.campaigns` c
-right join `my-sql-project-513018.campaign_data.daily_performance` d
-ON d.campaign_id = c.campaign_id
-where d.date 
+
+    SELECT 
+        format_date("%G", d.date) AS Year, 
+        c.campaign_name
+    FROM 
+        `my-sql-project-513018.campaign_data.campaigns` c
+    RIGHT JOIN 
+        `my-sql-project-513018.campaign_data.daily_performance` d
+    ON d.campaign_id = c.campaign_id
+    WHERE 
+        d.date NOT BETWEEN "2025-01-01" AND "2025-12-31"
+    ORDER BY 
+        Year DESC
 
 
 """ Question 10:"""
