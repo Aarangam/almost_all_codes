@@ -173,54 +173,33 @@
 
 """ Question 14: Pivot: revenue per channel with one column per year (conditional aggregation)."""
 
-    WITH
-        year_check AS (
-            SELECT DISTINCT format_date("%G", date)
-            FROM `my-sql-project-513018.campaign_data.daily_performance`
-        ),
-        rev26 AS (
+    SELECT
+        b.channel,
+        SUM(a.Revenue_2022) AS Revenue_22,
+        SUM(a.Revenue_2023)  AS Revenue_23,
+        SUM(a.Revenue_2024) AS Revenue_24,
+        SUM(a.Revenue_2025)  AS Revenue_25,
+        SUM(a.Revenue_2026) AS Revenue_26
+    FROM
+        (WITH
+            base_table AS (
+                SELECT
+                campaign_id AS Campaign_ID,
+                format_date("%G", date) AS Month,
+                CAST(ROUND(SUM(revenue)) AS INT64) AS Revenue
+                FROM `my-sql-project-513018.campaign_data.daily_performance`
+                GROUP BY 1, 2
+            )
             SELECT
-                campaign_id,
-                sum(revenue) AS Revenue_2026
-            FROM `my-sql-project-513018.campaign_data.daily_performance`
-            WHERE format_date("%G", date) = "2026"
-            GROUP BY 1
-        ),
-        rev25 AS (
-            SELECT
-                campaign_id,
-                sum(revenue) AS Revenue_2026
-            FROM `my-sql-project-513018.campaign_data.daily_performance`
-            WHERE format_date("%G", date) = "2025"
-            GROUP BY 1
-        ),
-        rev24 AS (
-            SELECT
-                campaign_id,
-                sum(revenue) AS Revenue_2026
-            FROM `my-sql-project-513018.campaign_data.daily_performance`
-            WHERE format_date("%G", date) = "2024"
-            GROUP BY 1
-        ),
-        rev23 AS (
-            SELECT
-                campaign_id,
-                sum(revenue) AS Revenue_2026
-            FROM `my-sql-project-513018.campaign_data.daily_performance`
-            WHERE format_date("%G", date) = "2023"
-            GROUP BY 1
-        ),
-        rev22 AS (
-            SELECT
-                campaign_id,
-                sum(revenue) AS Revenue_2026
-            FROM `my-sql-project-513018.campaign_data.daily_performance`
-            WHERE format_date("%G", date) = "2022"
-            GROUP BY 1
-        ),
-        base AS (
-            SELECT
-                campaign_id,
-                campaign_name
-            FROM `my-sql-project-513018.campaign_data.campaigns`
-        )
+            base_table.Campaign_ID AS Campaign_ID,
+            (CASE WHEN Month = "2022" THEN base_table.Revenue END) AS Revenue_2022,
+            (CASE WHEN Month = "2023" THEN base_table.Revenue END) AS Revenue_2023,
+            (CASE WHEN Month = "2024" THEN base_table.Revenue END) AS Revenue_2024,
+            (CASE WHEN Month = "2024" THEN base_table.Revenue END) AS Revenue_2025,
+            (CASE WHEN Month = "2025" THEN base_table.Revenue END) AS Revenue_2026,
+            FROM base_table
+            GROUP BY 1, 2, 3, 4, 5, 6
+        ) a
+    LEFT JOIN `my-sql-project-513018.campaign_data.campaigns` b
+    ON a.Campaign_ID = b.campaign_id
+    Group BY 1
