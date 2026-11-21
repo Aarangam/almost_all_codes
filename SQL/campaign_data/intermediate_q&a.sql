@@ -172,3 +172,55 @@
 
 
 """ Question 14: Pivot: revenue per channel with one column per year (conditional aggregation)."""
+
+    WITH
+        year_check AS (
+            SELECT DISTINCT format_date("%G", date)
+            FROM `my-sql-project-513018.campaign_data.daily_performance`
+        ),
+        rev26 AS (
+            SELECT
+                campaign_id,
+                sum(revenue) AS Revenue_2026
+            FROM `my-sql-project-513018.campaign_data.daily_performance`
+            WHERE format_date("%G", date) = "2026"
+            GROUP BY 1
+        ),
+        rev25 AS (
+            SELECT
+                campaign_id,
+                sum(revenue) AS Revenue_2026
+            FROM `my-sql-project-513018.campaign_data.daily_performance`
+            WHERE format_date("%G", date) = "2025"
+            GROUP BY 1
+        ),
+        rev24 AS (
+            SELECT
+                campaign_id,
+                sum(revenue) AS Revenue_2026
+            FROM `my-sql-project-513018.campaign_data.daily_performance`
+            WHERE format_date("%G", date) = "2024"
+            GROUP BY 1
+        ),
+        rev23 AS (
+            SELECT
+                campaign_id,
+                sum(revenue) AS Revenue_2026
+            FROM `my-sql-project-513018.campaign_data.daily_performance`
+            WHERE format_date("%G", date) = "2023"
+            GROUP BY 1
+        ),
+        rev22 AS (
+            SELECT
+                campaign_id,
+                sum(revenue) AS Revenue_2026
+            FROM `my-sql-project-513018.campaign_data.daily_performance`
+            WHERE format_date("%G", date) = "2022"
+            GROUP BY 1
+        ),
+        base AS (
+            SELECT
+                campaign_id,
+                campaign_name
+            FROM `my-sql-project-513018.campaign_data.campaigns`
+        )
